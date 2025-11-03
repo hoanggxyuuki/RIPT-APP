@@ -1,98 +1,188 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { RetroColors } from '@/constants/retro-theme';
+import { useRouter } from 'expo-router';
+import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const router = useRouter();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>╔═══════════════════════╗</Text>
+        <Text style={styles.headerTitle}>║   REACT NATIVE APP   ║</Text>
+        <Text style={styles.headerSubtitle}>║     RETRO EDITION     ║</Text>
+        <Text style={styles.headerText}>╚═══════════════════════╝</Text>
+      </View>
+
+      <ScrollView style={styles.content} contentContainerStyle={styles.scrollContent}>
+        <View style={styles.welcomeBox}>
+          <Text style={styles.welcomeText}>► XIN CHÀO REACT NATIVE!</Text>
+          <Text style={styles.blinkText}>█</Text>
+        </View>
+
+        <View style={styles.menu}>
+          <Text style={styles.menuTitle}>═══ DANH SÁCH BÀI TẬP ═══</Text>
+          
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push('/profile')}
+          >
+            <Text style={styles.buttonText}>[4] DANH THIẾP CÁ NHÂN</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push('/bai5')}
+          >
+            <Text style={styles.buttonText}>[5] TÍNH ĐIỂM TRUNG BÌNH</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push('/bai6')}
+          >
+            <Text style={styles.buttonText}>[6] ĐỔI MÀU NỀN</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push('/bai7')}
+          >
+            <Text style={styles.buttonText}>[7] DANH SÁCH CÔNG VIỆC</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => router.push('/bai10')}
+          >
+            <Text style={styles.buttonText}>[10] DANH SÁCH SINH VIÊN</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>───────────────────────</Text>
+          <Text style={styles.footerInfo}>PRESS BUTTON TO START</Text>
+          <Text style={styles.footerText}>───────────────────────</Text>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+    backgroundColor: RetroColors.terminal.bg,
+  },
+  header: {
+    backgroundColor: RetroColors.terminal.secondary,
+    borderBottomWidth: 3,
+    borderBottomColor: RetroColors.terminal.primary,
+    paddingTop: Platform.OS === 'android' ? 40 : 60,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+  },
+  headerText: {
+    color: RetroColors.terminal.textDark,
+    fontSize: 16,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    textAlign: 'center',
+  },
+  headerTitle: {
+    color: RetroColors.terminal.textDark,
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    textAlign: 'center',
+    marginVertical: 2,
+  },
+  headerSubtitle: {
+    color: RetroColors.terminal.textDark,
+    fontSize: 14,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    textAlign: 'center',
+    marginVertical: 2,
+  },
+  content: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 20,
+  },
+  welcomeBox: {
+    backgroundColor: RetroColors.terminal.bgLight,
+    borderWidth: 3,
+    borderColor: RetroColors.terminal.primary,
+    padding: 20,
+    marginBottom: 25,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  welcomeText: {
+    color: RetroColors.terminal.primary,
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginRight: 10,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  blinkText: {
+    color: RetroColors.terminal.primary,
+    fontSize: 16,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+  },
+  menu: {
+    marginBottom: 30,
+  },
+  menuTitle: {
+    color: RetroColors.terminal.primary,
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginBottom: 20,
+    textAlign: 'center',
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: RetroColors.terminal.dark,
+    paddingVertical: 10,
+  },
+  button: {
+    backgroundColor: RetroColors.terminal.bg,
+    borderWidth: 3,
+    borderColor: RetroColors.terminal.primary,
+    padding: 15,
+    marginVertical: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: RetroColors.terminal.text,
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    letterSpacing: 2,
+  },
+  footer: {
+    borderTopWidth: 2,
+    borderTopColor: RetroColors.terminal.dark,
+    paddingTop: 20,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  footerText: {
+    color: RetroColors.terminal.dark,
+    fontSize: 14,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+  },
+  footerInfo: {
+    color: RetroColors.terminal.primary,
+    fontSize: 12,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginVertical: 5,
+  },
+  footerCopyright: {
+    color: RetroColors.terminal.dark,
+    fontSize: 10,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginVertical: 5,
   },
 });

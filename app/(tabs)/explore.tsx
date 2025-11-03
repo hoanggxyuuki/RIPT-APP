@@ -1,112 +1,147 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { Collapsible } from '@/components/ui/collapsible';
-import { ExternalLink } from '@/components/external-link';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Fonts } from '@/constants/theme';
+import { RetroColors } from '@/constants/retro-theme';
+import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export default function TabTwoScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <IconSymbol
-          size={310}
-          color="#808080"
-          name="chevron.left.forwardslash.chevron.right"
-          style={styles.headerImage}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText
-          type="title"
-          style={{
-            fontFamily: Fonts.rounded,
-          }}>
-          Explore
-        </ThemedText>
-      </ThemedView>
-      <ThemedText>This app includes example code to help you get started.</ThemedText>
-      <Collapsible title="File-based routing">
-        <ThemedText>
-          This app has two screens:{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-        </ThemedText>
-        <ThemedText>
-          The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-          sets up the tab navigator.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Android, iOS, and web support">
-        <ThemedText>
-          You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-          <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-        </ThemedText>
-      </Collapsible>
-      <Collapsible title="Images">
-        <ThemedText>
-          For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-          <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-          different screen densities
-        </ThemedText>
-        <Image
-          source={require('@/assets/images/react-logo.png')}
-          style={{ width: 100, height: 100, alignSelf: 'center' }}
-        />
-        <ExternalLink href="https://reactnative.dev/docs/images">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Light and dark mode components">
-        <ThemedText>
-          This template has light and dark mode support. The{' '}
-          <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-          what the user&apos;s current color scheme is, and so you can adjust UI colors accordingly.
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-          <ThemedText type="link">Learn more</ThemedText>
-        </ExternalLink>
-      </Collapsible>
-      <Collapsible title="Animations">
-        <ThemedText>
-          This template includes an example of an animated component. The{' '}
-          <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-          the powerful{' '}
-          <ThemedText type="defaultSemiBold" style={{ fontFamily: Fonts.mono }}>
-            react-native-reanimated
-          </ThemedText>{' '}
-          library to create a waving hand animation.
-        </ThemedText>
-        {Platform.select({
-          ios: (
-            <ThemedText>
-              The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-              component provides a parallax effect for the header image.
-            </ThemedText>
-          ),
-        })}
-      </Collapsible>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>╔═══════════════════════╗</Text>
+        <Text style={styles.headerTitle}>║       ABOUT APP       ║</Text>
+        <Text style={styles.headerText}>╚═══════════════════════╝</Text>
+      </View>
+
+      <ScrollView style={styles.content} contentContainerStyle={styles.scrollContent}>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>► THÔNG TIN ỨNG DỤNG</Text>
+          <View style={styles.box}>
+            <Text style={styles.text}>APP NAME: REACT NATIVE</Text>
+            <Text style={styles.text}>VERSION: 1.0.0</Text>
+            <Text style={styles.text}>BUILD: 2025.11.03</Text>
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>► TÍNH NĂNG</Text>
+          <View style={styles.box}>
+            <Text style={styles.bulletText}>• DANH THIẾP CÁ NHÂN</Text>
+            <Text style={styles.bulletText}>• TÍNH ĐIỂM TRUNG BÌNH</Text>
+            <Text style={styles.bulletText}>• ĐỔI MÀU NGẪU NHIÊN</Text>
+            <Text style={styles.bulletText}>• QUẢN LÝ CÔNG VIỆC</Text>
+            <Text style={styles.bulletText}>• DANH SÁCH SINH VIÊN</Text>
+          </View>
+        </View>
+
+                                                               
+                                                               
+                                                               
+        <View style={styles.asciiArt}>
+          <Text style={styles.asciiText}></Text>
+<Text style={styles.asciiText}>░██           ░████                ░████                       </Text>
+<Text style={styles.asciiText}>░██          ░██ ██               ░██ ░██                      </Text>
+<Text style={styles.asciiText}>░████████   ░██  ██   ░██    ░██ ░██ ░████ ░██░████  ░███████  </Text>
+<Text style={styles.asciiText}>░██    ░██ ░██   ██    ░██  ░██  ░██░██░██ ░███     ░██    ░██ </Text>
+<Text style={styles.asciiText}>░██    ░██ ░█████████   ░█████   ░████ ░██ ░██      ░██        </Text>
+<Text style={styles.asciiText}>░██    ░██      ░██    ░██  ░██   ░██ ░██  ░██      ░██    ░██ </Text>
+<Text style={styles.asciiText}>░██    ░██      ░██   ░██    ░██   ░████   ░██       ░███████ </Text> 
+        </View>
+
+    
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
+  container: {
+    flex: 1,
+    backgroundColor: RetroColors.terminal.bg,
   },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+  header: {
+    backgroundColor: RetroColors.terminal.secondary,
+    borderBottomWidth: 3,
+    borderBottomColor: RetroColors.terminal.primary,
+    paddingTop: Platform.OS === 'android' ? 40 : 60,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+  },
+  headerText: {
+    color: RetroColors.terminal.textDark,
+    fontSize: 16,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    textAlign: 'center',
+  },
+  headerTitle: {
+    color: RetroColors.terminal.textDark,
+    fontSize: 16,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    textAlign: 'center',
+    marginVertical: 2,
+  },
+  content: {
+    flex: 1,
+  },
+  scrollContent: {
+    padding: 20,
+  },
+  section: {
+    marginBottom: 25,
+  },
+  sectionTitle: {
+    color: RetroColors.terminal.primary,
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginBottom: 10,
+  },
+  box: {
+    backgroundColor: RetroColors.terminal.bgLight,
+    borderWidth: 2,
+    borderColor: RetroColors.terminal.primary,
+    padding: 15,
+  },
+  text: {
+    color: RetroColors.terminal.text,
+    fontSize: 12,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginVertical: 3,
+  },
+  bulletText: {
+    color: RetroColors.terminal.text,
+    fontSize: 12,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginVertical: 2,
+  },
+  asciiArt: {
+    alignItems: 'center',
+    marginVertical: 30,
+    backgroundColor: RetroColors.terminal.bgLight,
+    borderWidth: 2,
+    borderColor: RetroColors.terminal.dark,
+    padding: 20,
+  },
+  asciiText: {
+    color: RetroColors.terminal.primary,
+    fontSize: 5,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    lineHeight: 8,
+  },
+  footer: {
+    borderTopWidth: 2,
+    borderTopColor: RetroColors.terminal.dark,
+    paddingTop: 20,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  footerText: {
+    color: RetroColors.terminal.dark,
+    fontSize: 14,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+  },
+  footerInfo: {
+    color: RetroColors.terminal.primary,
+    fontSize: 12,
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    marginVertical: 5,
   },
 });
