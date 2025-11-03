@@ -80,7 +80,7 @@ export default function HackSlinkScreen() {
         setTrollMode('success');
         Alert.alert(
           '🎉 HACK SUCCESS!',
-          'Bạn vừa bị troll! Không có gì bị hack cả 😄',
+         
           [{ text: 'LOL', onPress: () => setTrollMode('idle') }]
         );
       }
@@ -109,7 +109,7 @@ export default function HackSlinkScreen() {
         clearInterval(interval);
         Alert.alert(
           '😈 VIRUS ALERT!',
-          'Máy bạn vừa bị nhiễm 20000+ virus!\n\n...Đùa thôi! Mọi thứ an toàn 😂',
+          'Máy bạn vừa bị nhiễm 20000+ virus!\n\n...',
           [{ text: 'Phù!', onPress: () => setTrollMode('idle') }]
         );
       }
@@ -139,7 +139,7 @@ export default function HackSlinkScreen() {
     setTimeout(() => {
       Alert.alert(
         '💥 SYSTEM CRASHED!',
-        'Windows has encountered a problem and needs to restart.\n\nJK! Chỉ là troll 😝',
+        'Windows has encountered a problem and needs to restart.\n\nJK! ',
         [{ text: 'Restart', onPress: () => setTrollMode('idle') }]
       );
     }, 3000);
@@ -148,7 +148,7 @@ export default function HackSlinkScreen() {
   const deleteSystem32 = () => {
     Alert.alert(
       '⚠️ WARNING!',
-      'Bạn có chắc muốn xóa System32?\n\nĐừng lo, đây chỉ là fake thôi 😄',
+      'Bạn có chắc muốn xóa System32?\n\n',
       [
         { text: 'Hủy', style: 'cancel' },
         {
@@ -158,7 +158,7 @@ export default function HackSlinkScreen() {
             addConsoleLine('> DELETING C:\\Windows\\System32...');
             addConsoleLine('> ERROR: ACCESS DENIED');
             addConsoleLine('> NICE TRY! 😎');
-            Alert.alert('😂', 'Bạn nghĩ tôi sẽ thật sự cho xóa à?');
+           
           }
         }
       ]
@@ -273,9 +273,7 @@ export default function HackSlinkScreen() {
         </View>
 
         <View style={styles.warning}>
-          <Text style={styles.warningText}>
-            ⚠️ DISCLAIMER: ĐÂY CHỈ LÀ TROLL, KHÔNG CÓ GÌ BỊ HACK THẬT ⚠️
-          </Text>
+          
         </View>
       </View>
     </View>
