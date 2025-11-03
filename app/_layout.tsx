@@ -44,6 +44,7 @@ export default function RootLayout() {
         <Stack.Screen name="bai10" options={{ headerShown: false }} />
         <Stack.Screen name="student-detail" options={{ headerShown: false }} />
         <Stack.Screen name="student-add" options={{ headerShown: false }} />
+        <Stack.Screen name="hack-slink" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

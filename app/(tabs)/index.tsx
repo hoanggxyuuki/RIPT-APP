@@ -57,6 +57,15 @@ export default function HomeScreen() {
           >
             <Text style={styles.buttonText}>[10] DANH SÁCH SINH VIÊN</Text>
           </TouchableOpacity>
+
+          <View style={styles.separator} />
+
+          <TouchableOpacity
+            style={[styles.button, styles.trollButton]}
+            onPress={() => router.push('/hack-slink')}
+          >
+            <Text style={styles.trollButtonText}>🎭 [HACK SLINK 😈]</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.footer}>
@@ -160,6 +169,22 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
     letterSpacing: 2,
+  },
+  separator: {
+    height: 2,
+    backgroundColor: RetroColors.terminal.dark,
+    marginVertical: 15,
+  },
+  trollButton: {
+    borderColor: '#FF00FF',
+    backgroundColor: '#1a001a',
+  },
+  trollButtonText: {
+    color: '#FF00FF',
+    fontSize: 14,
+    fontWeight: 'bold',
+    fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+    letterSpacing: 1,
   },
   footer: {
     borderTopWidth: 2,
